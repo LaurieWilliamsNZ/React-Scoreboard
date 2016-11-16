@@ -7,7 +7,6 @@ function Header (props) {
     </div>
   );
 }
-
 Header.propTypes = {
   title: React.PropTypes.string.isRequired
 };

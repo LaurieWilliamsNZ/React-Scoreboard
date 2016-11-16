@@ -8,14 +8,15 @@ function Player (props) {
         {props.playerName}
       </div>
       <div className='player-score'>
-        <Counter score={props.score} />
+        <Counter initialScore={props.playerScore} />
       </div>
     </div>
     );
 }
 Player.propTypes = {
   playerName: React.PropTypes.string.isRequired,
-  score: React.PropTypes.number.isRequired
+  playerScore: React.PropTypes.number.isRequired
 };
 
 export default Player;
+
