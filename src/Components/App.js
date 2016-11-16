@@ -22,37 +22,44 @@ const PLAYERS = [
   }
 ];
 
-function App (props) {
-  return (
-    <div className='scoreboard'>
-      <Header title={props.title} />
-      <div className='players'>
-       {props.players.map((player, key) => {
-         return (
-           <Player
-             playerName={player.playerName}
-             playerScore={player.playerScore}
-             key={player.ID}
-           />);
-       })}
-      </div>
-    </div>
-  );
-}
-
-App.propTypes = {
+const App = React.createClass({
+  PropTypes: {
   title: React.PropTypes.string,
-  players: React.PropTypes.arrayOf(React.PropTypes.shape({
+  initialPlayers: React.PropTypes.arrayOf(React.PropTypes.shape({
     playerName: React.PropTypes.string.isRequired,
     playerScore: React.PropTypes.number.isRequired,
-    ID: React.PropTypes.number.isRequired,
+    ID: React.PropTypes.number.isRequired
   })).isRequired,
-};
-
-App.defaultProps = {
-  title: 'Scoreboard'
-};
+  },
+  getInitialState () {
+    return {
+      players: this.props.initialPlayers
+    };
+  },
+  getDefaultProps () {
+    return {
+      title: 'Scoreboard'
+    };
+  },
+  render (props) {
+    return (
+      <div className='scoreboard'>
+        <Header title={this.props.title} />
+        <div className='players'>
+          {this.state.players.map((player, key) => {
+            return (
+              <Player
+                playerName={player.playerName}
+                playerScore={player.playerScore}
+                key={player.ID}
+              />);
+          })}
+        </div>
+      </div>
+    );
+  }
+});
 
 ReactDOM.render(
-  <App players={PLAYERS} /> ,document.getElementById('root')
+  <App initialPlayers={PLAYERS} /> ,document.getElementById('root')
 );
