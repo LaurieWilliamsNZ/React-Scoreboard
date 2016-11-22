@@ -4,7 +4,7 @@ import '../styles/App.css';
 import Player from '../Components/Player';
 import Header from '../Components/Header';
 import AddPlayerForm from '../Components/AddPlayerForm';
-import Stopwatch from '../Components/Stopwatch';
+
 
 const PLAYERS = [
   {
