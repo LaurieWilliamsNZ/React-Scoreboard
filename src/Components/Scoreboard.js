@@ -5,7 +5,6 @@ import Player from '../Components/Player';
 import Header from '../Components/Header';
 import AddPlayerForm from '../Components/AddPlayerForm';
 
-
 const PLAYERS = [
   {
     playerName: 'Archer',
@@ -26,14 +25,14 @@ const PLAYERS = [
 
 let nextID = 4;
 
-const App = React.createClass({
+const Scoreboard = React.createClass({
   PropTypes: {
     title: React.PropTypes.string,
     initialPlayers: React.PropTypes.arrayOf(React.PropTypes.shape({
       playerName: React.PropTypes.string.isRequired,
       playerScore: React.PropTypes.number.isRequired,
       ID: React.PropTypes.number.isRequired
-    })).isRequired,
+    })).isRequired
   },
   getInitialState () {
     return {
@@ -87,5 +86,6 @@ const App = React.createClass({
 });
 
 ReactDOM.render(
-  <App initialPlayers={PLAYERS} /> ,document.getElementById('root')
+  <Scoreboard initialPlayers={PLAYERS} /> ,document.getElementById('root')
 );
+export default Scoreboard;
